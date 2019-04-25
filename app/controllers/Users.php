@@ -10,6 +10,9 @@ class Users extends Controller
 {
     public function __construct()
     {
+        //  HERE WE WILL LOAD OUR MODEL
+        //  Loading users model
+        $this->userModel = $this->model('User');
     }
 
     /**
@@ -17,12 +20,16 @@ class Users extends Controller
      */
     public function register()
     {
+        //LOADING OUR FORM WHEN we go to the register page
+        //Submitting register form
         //CHECK FOR POST, SERVER superglobal
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            //            Init data
+            //Init data register form
+//            In case of the error and if we want to save input data in the form input field we need to pass POST[''] back to te form
+//            seee below
             $data = [
                 'name' => trim($_POST['name']),
                 'email' => trim($_POST['email']),
@@ -34,24 +41,28 @@ class Users extends Controller
                 'confirm_password_err' => ''
             ];
 
-//             Validate Email
-
+            //  Validate Email
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
             }
+            else {
+                //  Check email
+                if ($this->userModel->findUserByEmail($data['email'])) {
+                    $data['email_err'] = 'This Email is already taken';
+                }
+            }
 
-//                            Validate Name
+            //  Validate Name
             if (empty($data['name'])) {
                 $data['name_err'] = 'Please enter name';
             }
-            //                            password Name
+            //  Password Name
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter password';
             } elseif (strlen($data['password']) < 6) {
                 $data['password_err'] = 'Please must be at least 6 characters';
             }
-
-            //                            password Name
+            //  Password Name
             if (empty($data['confirm_password'])) {
                 $data['confirm_password_err'] = 'Please confirm password';
             } else {// confirm passwords validation
@@ -60,17 +71,17 @@ class Users extends Controller
                     $data['confirm_password_err'] = 'Passwords do not mutch';
                 }
             }
-//                                       make sure errors are empty
+            //   Make sure errors are empty
             if (empty($data['email_err'] && $data['name_err'] && $data['password_err'] && $data['confirm_password_err'])) {
-//                 Validated
+                //  Validated
                 die('SUCCESS');
             } else {
-//                LOAD VIEW WITH ERRORS
+                //  LOAD VIEW WITH ERRORS
                 $this->view('users/register', $data);
             }
 
         } else {
-//            Init data
+            //   Init data
             $data = [
                 'name' => '',
                 'email' => '',
@@ -86,12 +97,13 @@ class Users extends Controller
             $this->view('users/register', $data);
         }
     }
+
     /**
      * Login Form Data
      */
     public function login()
     {
-//         CHECK FOR POST, SERVER superglobal
+        //  CHECK FOR POST, SERVER superglobal
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -106,7 +118,6 @@ class Users extends Controller
 
 
             // Email Validation
-
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
             }
@@ -118,12 +129,12 @@ class Users extends Controller
             }
 
 
-//            Make sure errors are empty
-            if (empty($data['email_err'] && $data['password_err'] )) {
-//                 Validated
+            //  Make sure errors are empty
+            if (empty($data['email_err'] && $data['password_err'])) {
+                //   Validated
                 die('SUCCESS login');
             } else {
-//                LOAD VIEW WITH ERRORS
+                //  LOAD VIEW WITH ERRORS
                 $this->view('users/login', $data);
             }
 
@@ -136,10 +147,8 @@ class Users extends Controller
                 'password_err' => ''
             ];
 
-//           LOAD view
+            //  LOAD view
             $this->view('users/login', $data);
         }
     }
-
-
 }
