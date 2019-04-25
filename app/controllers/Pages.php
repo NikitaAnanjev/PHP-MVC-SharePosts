@@ -18,8 +18,8 @@ class Pages extends Controller
 
 // PASSING DATA
         $data = [
-            'title' => 'Welcome',
-
+            'title' => 'Shareposts',
+            'description' =>'Simple social network build on custom MVC PHP framework'
         ];
 
         $this->view('pages/index', $data);
@@ -29,7 +29,8 @@ class Pages extends Controller
     {
 
         $data = [
-            'title' => 'About Us'
+            'title' => 'About Us',
+            'description' =>'App to share posts with user auth'
         ];
         $this->view('pages/about', $data);
     }
