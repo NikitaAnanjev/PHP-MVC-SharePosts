@@ -9,6 +9,7 @@
 
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
+                <?php flash('register_success'); ?>
                 <h2>Login</h2>
                 <p>Please fill out this form to login in your account</p>
                 <form action="<?php echo URLROOT; ?>/users/login" method="post">

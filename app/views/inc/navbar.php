@@ -17,9 +17,16 @@
 
             <div class="menu-menu-1-container">
                 <ul id="menu-menu-1" class="list-unstyled components">
+                    <?php
+                    if(isset($_SESSION['user_id'])) : ?>
+                        <li id="menu-item-5"
+                            class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
+                            <a title="LogOut" href="<?php echo URLROOT;?>/users/logout" class="nav-link">LogOut</a></li>
+                    <?php  else :?>
                     <li id="menu-item-1"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
                         <a title="Home" href="<?php echo URLROOT;?>" class="nav-link">Home</a></li>
+                    <?php  endif;?>
                     <li id="menu-item-2"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
                         <a title="About" href="<?php echo URLROOT;?>/pages/about" class="nav-link">About</a></li>
