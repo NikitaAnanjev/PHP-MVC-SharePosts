@@ -41,7 +41,7 @@
                 </ul>
             </div>
             <button type="button" id="sidebarCollapse" class="btn btn-info but-collapse">
-                <i class="fas fa-align-left"></i>
+                <i class="fa fa-align-left"></i>
                 <!--                <span>Toggle Sidebar</span>-->
             </button>
         </div>
