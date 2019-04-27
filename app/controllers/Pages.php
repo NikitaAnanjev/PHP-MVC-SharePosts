@@ -15,11 +15,13 @@ class Pages extends Controller
 
     public function index()
     {
-
+        if (isLoggedIn()) {
+            redirect('posts');
+        }
 // PASSING DATA
         $data = [
             'title' => 'Shareposts',
-            'description' =>'Simple social network build on custom MVC PHP framework'
+            'description' => 'Simple social network build on custom MVC PHP framework'
         ];
 
         $this->view('pages/index', $data);
@@ -30,7 +32,7 @@ class Pages extends Controller
 
         $data = [
             'title' => 'About Us',
-            'description' =>'App to share posts with user auth'
+            'description' => 'App to share posts with user auth'
         ];
         $this->view('pages/about', $data);
     }

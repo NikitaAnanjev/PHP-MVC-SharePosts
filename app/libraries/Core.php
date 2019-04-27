@@ -52,11 +52,8 @@ class Core
                 unset($url[1]);
             }
         }
-//        echo $this->currentMethod;
-
+//  echo $this->currentMethod;
 // GET PARAMS
-
-
         $this->params = $url ? array_values($url) : [];
 
 //        CALL a callback with array of params

@@ -34,14 +34,15 @@ class User
 
 
     // Login User
-    public function login($email, $password){
+    public function login($email, $password)
+    {
         $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $email);
 
         $row = $this->db->single();
 
         $hashed_password = $row->password;
-        if(password_verify($password, $hashed_password)){
+        if (password_verify($password, $hashed_password)) {
             return $row;
         } else {
             return false;
@@ -64,6 +65,20 @@ class User
         } else {
             return false;
         }
+    }
 
+
+    //  GET user by id
+    public function getUserById($id)
+    {
+        //   Calling from the DB library query "Prepared Statement with query" -> libraries/Database.php
+        $this->db->query('SELECT * FROM users WHERE id = :id');
+        //  Bind value tot the email-> [parsing email from the controller
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+
+        //  Check row
+        //        @Database.php rowCount();
+        return $row;
     }
 }

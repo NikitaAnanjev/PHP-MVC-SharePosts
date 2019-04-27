@@ -2,13 +2,11 @@
 /**
  * @ View for Posts
  */
-
-?>
-
-
-<?php require APPROOT . '/views/inc/header.php'; ?>
+require APPROOT . '/views/inc/header.php'; ?>
 
     <div class="container">
+
+        <?php flash('post_message');?>
         <div class="row mb-3">
             <div class="col-md-6">
                 <h1> posts</h1>
