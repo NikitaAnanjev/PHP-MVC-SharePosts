@@ -4,10 +4,10 @@
         <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
             <div class="sidebar-header">
                 <div class="navbar-brand">
-                    <a href="<?php echo URLROOT;?>">
-<!--                        <img src="http://localhost/bootstrap/wp-content/uploads/2019/02/logotwo-1.svg"-->
-<!--                             alt="TEsting ajax" class="mCS_img_loaded">-->
-                        <?php echo  SITENAME;?>
+                    <a href="<?php echo URLROOT; ?>">
+                        <!--                        <img src="http://localhost/bootstrap/wp-content/uploads/2019/02/logotwo-1.svg"-->
+                        <!--                             alt="TEsting ajax" class="mCS_img_loaded">-->
+                        <?php echo SITENAME; ?>
                     </a>
 
                 </div>
@@ -20,27 +20,33 @@
 
                     <li id="menu-item-1"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
-                        <a title="Home" href="<?php echo URLROOT;?>" class="nav-link">Home</a></li>
+                        <a title="Home" href="<?php echo URLROOT; ?>" class="nav-link">Home</a></li>
 
                     <li id="menu-item-2"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
-                        <a title="About" href="<?php echo URLROOT;?>/pages/about" class="nav-link">About</a></li>
+                        <a title="About" href="<?php echo URLROOT; ?>/pages/about" class="nav-link">About</a></li>
                 </ul>
                 <ul id="menu-menu-2" class="list-unstyled components">
                     <li id="menu-item-3"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
-                        <a title="Home" href="<?php echo URLROOT;?>/users/register" class="nav-link">Register</a></li>
+                        <a title="Home" href="<?php echo URLROOT; ?>/users/register" class="nav-link">Register</a></li>
                     <?php
-                    if(isset($_SESSION['user_id'])) : ?>
+                    if (isset($_SESSION['user_id'])) : ?>
+
+                        <li id="menu-item-6"
+                            class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16">
+                            <a  href="" class="nav-link"> Welcome <?php echo $_SESSION['user_name'];?></a></li>
+
                         <li id="menu-item-5"
                             class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
-                            <a title="LogOut" href="<?php echo URLROOT;?>/users/logout" class="nav-link">LogOut</a></li>
+                            <a title="LogOut" href="<?php echo URLROOT; ?>/users/logout" class="nav-link">LogOut</a>
+                        </li>
 
-                    <?php  else :?>
-                    <li id="menu-item-4"
-                        class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16">
-                        <a title="About" href="<?php echo URLROOT;?>/users/login" class="nav-link"> LogIn</a></li>
-                    <?php  endif;?>
+                    <?php else : ?>
+                        <li id="menu-item-4"
+                            class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16">
+                            <a title="About" href="<?php echo URLROOT; ?>/users/login" class="nav-link"> LogIn</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <button type="button" id="sidebarCollapse" class="btn btn-info but-collapse">
