@@ -25,6 +25,9 @@
                     <li id="menu-item-2"
                         class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
                         <a title="About" href="<?php echo URLROOT; ?>/pages/about" class="nav-link">About</a></li>
+                    <li id="menu-item-7"
+                        class="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-5 current_page_item menu-item-16 ">
+                        <a title="Cases" href="<?php echo URLROOT; ?>/pages/cases" class="nav-link">Cases</a></li>
                 </ul>
                 <ul id="menu-menu-2" class="list-unstyled components">
                     <li id="menu-item-3"

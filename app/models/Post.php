@@ -20,6 +20,7 @@ class Post
         $this->db->query('SELECT *,
                              posts.id as postId,
                              users.id as userId,
+                             image as img,
                              posts.created_at as postCreated,
                              users.created_at as userCreated
                              FROM posts
@@ -33,11 +34,12 @@ class Post
 
     public function addPost($data) {
 
-            $this->db->query('INSERT INTO posts (title, user_id, body) VALUES(:title, :user_id, :body)');
+            $this->db->query('INSERT INTO posts (title, user_id, body,image) VALUES(:title, :user_id, :body,:image)');
             //    Bind Values for registration of the user
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':user_id', $data['user_id']);
             $this->db->bind(':body', $data['body']);
+            $this->db->bind(':image', $data['image']);
 
             //  Execute Method from the libraries/database.php
             if ($this->db->execute()) {
@@ -55,6 +57,7 @@ class Post
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':body', $data['body']);
+        $this->db->bind(':image', $data['image']);
 
         //  Execute Method from the libraries/database.php
         if ($this->db->execute()) {

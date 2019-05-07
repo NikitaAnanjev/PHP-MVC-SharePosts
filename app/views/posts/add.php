@@ -22,6 +22,11 @@ require APPROOT . '/views/inc/header.php'; ?>
                     <textarea name="body" class="form-control form-control-lg <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>"><?php echo $data['body']; ?></textarea>
                     <span class="invalid-feedback"><?php echo $data['body_err']; ?></span>
                 </div>
+                <div class="form-group">
+                    <label for="image">Image: <sup>*</sup></label>
+                    <input name="image" class="form-control form-control-lg <?php echo (!empty($data['image_err'])) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $data['image_err'];?></span>
+                </div>
                 <input type="submit" class="btn btn-success" value="Submit">
             </form>
         </div>
